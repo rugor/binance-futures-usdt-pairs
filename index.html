@@ -17,9 +17,9 @@
                 const data = await response.json();
                 const symbols = data.symbols;
 
-                // Filter and format USDT pairs
+                // Filter and format USDT pairs with status "TRADING"
                 const usdtPairs = symbols
-                    .filter((symbol) => symbol.symbol.endsWith('USDT'))
+                    .filter((symbol) => symbol.symbol.endsWith('USDT') && symbol.status === 'TRADING')
                     .map((symbol) => `BINANCE:${symbol.symbol}PERP`);
 
                 // Create a Blob from the file content
