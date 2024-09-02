@@ -11,7 +11,12 @@ async function fetchTradingPairs() {
 
     // Filter and format USDT pairs
     const usdtPairs = symbols
-      .filter((symbol) => symbol.symbol.endsWith('USDT'))
+      // .filter((symbol) => symbol.symbol.endsWith('USDT'))
+      // tradingn pairs only
+      .filter(
+        (symbol) =>
+          symbol.symbol.endsWith('USDT') && symbol.status === 'TRADING'
+      )
       .map((symbol) => `BINANCE:${symbol.symbol}PERP`);
 
     // Write to a text file
